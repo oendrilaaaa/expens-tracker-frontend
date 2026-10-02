@@ -1,4 +1,5 @@
 import { createContext, useState, useContext } from "react";
+import { LoginApi } from "../services/api";
 export const AuthContext = createContext()
 
 export const useAuth = () => {
@@ -31,9 +32,12 @@ const AuthProvider = ({ children }) => {
             window.alert("Enter OTP of 6 digit only")
             return
         }
+        const resp = LoginApi({}, {
+            mobile:mobile,
+            otp:otp,
+        })
         // TODO need to call Login Api here
         console.log("logged in!!")
-        const resp = { "name": "Jhilik", "access_token": "123", "refresh_token": "234" }
         localStorage.setItem("user", JSON.stringify(resp))
         localStorage.setItem("access_token", resp?.access_token)
         localStorage.setItem("refresh_token", resp?.refresh_token)

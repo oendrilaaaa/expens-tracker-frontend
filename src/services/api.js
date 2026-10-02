@@ -1,6 +1,37 @@
 import axios from "axios";
-const APT = axios.create({
-    baseURL: "http://127.0.0.1:8000/api",
-    headers: {
-        "Content-Type":"application/json",
-    },});
+import { API_BASE_URL } from "./constants"
+/*
+
+base url example = https://google.com
+api path = images/
+
+api = https://google.com/images/
+
+api with query params = https://google.com/images/?search=oendrila
+
+
+base url
+Api path
+query params
+request data
+*/
+
+function gen_api(api_path="", query_params = {}) {
+    let api = `${API_BASE_URL}/api/${api_path}`
+    // TOOD need to add logic for query_params to append at end
+    console.log("generated Api url ", api)
+    return api
+}
+
+export const LoginApi = (query_params={}, payload={}) => {
+    try {
+        const response = axios.post(
+            gen_api("auth/", query_params),
+            payload,
+        )
+        return response
+    } catch (e) {
+        console.log(e)
+        window.alert("Failed to call api")
+    }
+}

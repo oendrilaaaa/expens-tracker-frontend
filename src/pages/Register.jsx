@@ -14,29 +14,25 @@ const Register = () => {
            <div className='text-black text-xl font-bold'>Register</div>
            <div className=' items-center flex flex-col place-items-center py-3 text-white'>
               
-              <input type="text"
-                    id="username"
-                    placeholder='Enter your username'
-                    className='w-full px-3 py-2 bg-white border border-gray-900 focus:outline-none rounded-xl' />
               <div className="py-4">
                 <input type="number"
                     id="number"
                     placeholder='Enter your mobile number'
-                    className='w-full px-3 py-2 bg-white border border-gray-900 focus:outline-none rounded-xl' />
+                    className='w-full px-3 py-2 bg-white border border-gray-900 focus:outline-none rounded-xl text-black' />
            
               </div>
                <div >
                 <input type="text"
                     id="name"
                     placeholder='Enter your name'
-                    className='w-full px-3 py-2 bg-white border border-gray-900 focus:outline-none rounded-xl' />
+                    className='w-full px-3 py-2 bg-white border border-gray-900 focus:outline-none rounded-xl text-black' />
            
               </div>
            </div>
            <div className='py-1'>
               <button 
-               
-                className=' px-6 py-4 bg-slate-800 text-white rounded-xl hover:bg-black'
+                onClick={()=>{navigate('/')}}
+                className=' px-6 py-4 bg-slate-800 text- rounded-xl hover:bg-black text-white'
                 >Register</button>
            </div>
            

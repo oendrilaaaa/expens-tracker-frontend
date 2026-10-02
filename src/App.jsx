@@ -6,16 +6,19 @@ import Register from './pages/Register'
 import { Routes, Route } from 'react-router-dom'
 import AddTransaction from './pages/AddTransaction'
 import Transactions from './pages/Transactions'
+import EnterOtp from './pages/EnterOtp'
 function App() {
 
   return (
     <>
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<Login/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
-      </Routes> */}
+        <Route path ="/otp" element={<EnterOtp/>}></Route>
+      </Routes>
       {/* <AddTransaction/> */}
-      <Transactions/>
+      {/* <Transactions/> */}
+      {/* <EnterOtp/> */}
     </>
   )
 }

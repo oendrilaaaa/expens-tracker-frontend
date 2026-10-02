@@ -15,15 +15,17 @@ const AddTransaction = () => {
         console.log("selected category is", value)
         setCategoryMethod(value)
     }
-
+    const handleTransactionType = (type)=>{
+        console.log(type)
+    }
     return (
         <>
             <div className='flex grid min-h-screen place-items-center '>
                 <div className='place-items-center'>
                     <div>Add Transaction Type</div>
                     <div className='flex flexbox p-4'>
-                        <button className='px-5 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-700 '>Expense</button>
-                        <button className='px-5 py-2 mx-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 '>Income</button>
+                        <button onClick={()=>handleTransactionType("Expense")} className='px-5 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-700 '>Expense</button>
+                        <button onClick={()=>handleTransactionType("Income")} className='px-5 py-2 mx-3 bg-slate-800 text-white rounded-lg hover:bg-slate-700 '>Income</button>
                     </div>
                     <div className=' items-center flex flex-col place-items-center py-3 '>
                         Amount

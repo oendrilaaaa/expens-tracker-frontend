@@ -26,7 +26,7 @@ function gen_api(api_path="", query_params = {}) {
 export const LoginApi = (query_params={}, payload={}) => {
     try {
         const response = axios.post(
-            gen_api("auth/", query_params),
+            gen_api("login/", query_params),
             payload,
         )
         return response

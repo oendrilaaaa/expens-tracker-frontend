@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from "react";
-import { LoginApi } from "../services/api";
+import { sendOtpApi, sendLoginOtp } from "../services/api";
 export const AuthContext = createContext()
 
 export const useAuth = () => {
@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
     const [accessToken, setAccessToken] = useState(localStorage.getItem("access_token"))
     const [refreshToken, setRefreshToken] = useState(localStorage.getItem("refresh_token"))
 
-
+    
     const sendLoginOTP = (mobile, callback) => {
         // validate value, should be a valid mobile number without country code.
         if (mobile?.length !== 10) {
@@ -27,24 +27,26 @@ const AuthProvider = ({ children }) => {
         callback(true, {})
     }
 
-    const login = (mobile, otp) => {
-        if (otp?.length !== 6) {
-            window.alert("Enter OTP of 6 digit only")
-            return
-        }
-        const resp = LoginApi({}, {
-            mobile:mobile,
-            otp:otp,
-        })
-        // TODO need to call Login Api here
-        console.log("logged in!!")
-        localStorage.setItem("user", JSON.stringify(resp))
-        localStorage.setItem("access_token", resp?.access_token)
-        localStorage.setItem("refresh_token", resp?.refresh_token)
-        setUser(resp)
-        setAccessToken(resp?.access_token)
-        setRefreshToken(resp?.refresh_token)
-    }
+    // const login = (mobile, otp) => {
+    //     if (otp?.length !== 6) {
+    //         window.alert("Enter OTP of 6 digit only")
+    //         return
+    //     }
+    //     const resp = LoginApi({}, {
+    //         mobile:mobile,
+    //         otp:otp,
+    //     })
+    //     // TODO need to call Login Api here
+    //     console.log("logged in!!")
+    //     localStorage.setItem("user", JSON.stringify(resp))
+    //     localStorage.setItem("access_token", resp?.access_token)
+    //     localStorage.setItem("refresh_token", resp?.refresh_token)
+    //     setUser(resp)
+    //     setAccessToken(resp?.access_token)
+    //     setRefreshToken(resp?.refresh_token)
+    // }
+
+
     const logout = () => {
         setUser(null)
         setAccessToken(null)
@@ -57,9 +59,8 @@ const AuthProvider = ({ children }) => {
             user,
             accessToken,
             refreshToken,
-            login,
             logout,
-            sendLoginOTP
+            sendLoginOtp
         }}>
             {children}
         </AuthContext.Provider>

@@ -6,7 +6,7 @@ import Register from './pages/Register'
 import { Routes, Route } from 'react-router-dom'
 import AddTransaction from './pages/AddTransaction'
 import Transactions from './pages/Transactions'
-import EnterOtp from './pages/EnterOtp'
+import EnterOtp from './pages/enterOtp'
 function App() {
 
   return (

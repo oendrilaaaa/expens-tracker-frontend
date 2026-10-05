@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
+import { sendLoginOtp } from '../services/api'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -55,7 +56,7 @@ const Login = () => {
                 >Login</button>
               ) : (
                 <button
-                  onClick={() => sendLoginOTP(mobile, sendOtpRespHandler)}
+                  onClick={() => sendLoginOtp(mobile, sendOtpRespHandler)}
                   className=' px-6 py-4 bg-slate-800 text-white rounded-xl hover:bg-black'
                 >Send OTP</button>
               )
